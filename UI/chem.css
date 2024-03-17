@@ -1,0 +1,174 @@
+
+
+.header{
+    background-color: #011627;
+    font-size: 30px;
+    padding-bottom: 2.5%;
+    padding-top: 2%;
+    width:100%;
+    margin: 0;
+   
+}
+
+.inp{
+    width: 80%;
+    align-items: center;
+    
+}
+
+.inele{
+    text-align: left;
+    padding-left: 2%;
+    color: #fffffb;
+    font-size: 50px;
+    font-family: Georgia, serif;
+}
+
+/* button{
+    color: white;
+    text-align: center;
+    border-color: whitesmoke;
+    background-color: transparent;
+    font-size: 10px;
+    
+    
+} */
+a{
+   height:40px;
+   width:90px;
+   font-size: 15px;
+   font-style: 'Open Sans', sans-serif;;
+   border: none;
+   font-family: 'Bebas Neue', cursive;
+   font-family: 'Open Sans', sans-serif;
+   font-family: serif;
+   margin-left: 2%;
+   
+}
+
+.menu{
+    color: gray;
+    background-color: transparent;
+    font-size: 20px;
+    text-decoration: none !important;
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+    line-height: 48px;
+    /* text-decoration: underline;
+    text-underline-offset: 2px; */
+}
+
+
+
+.menu:hover{
+    cursor: pointer;
+    color:#011627;
+    
+}
+
+.menu:focus{
+    color: black;
+    border-bottom: 1px solid black;
+}
+
+
+#chem{
+    
+    font-family: sans-serif;
+    
+    
+}
+
+label{
+    margin-top: 10%;
+}
+
+#Molality,#Molarity,#Molefraction,#MolarWeight,#Normality,#Strength{
+    /* position: absolute;
+    top: 170px;
+    left: 10px; */
+    display:none;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.closebtn {
+    float: right;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+  }
+.column {
+    float: left;
+    margin-left: 5%;
+    /* width: 16.66%; */
+    /* padding: 10px; */
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+    color: white;
+    margin-bottom: 8%;
+}
+
+/* * {
+    box-sizing: border-box;
+  } */
+  body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid-container {
+    margin-left: 25%;
+    display: grid;
+    grid-template-columns: 20% 20%;
+    /* background-color: #2196F3; */
+    padding: 4px;
+    width: 80%;
+  }
+  
+  .grid-item {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 2px;
+    font-size: 16px;
+    text-align: center;
+    align-items: center !important;
+  }
+
+  #definition
+  {
+    font-family:Georgia, serif ;
+    text-align: center;
+    padding-top: 20px;
+    position:relative;
+  }
+  button{
+    border:none;
+    font-size: 120%;
+    border-radius: 5%;
+    background-color:#011627;
+    color: whitesmoke;
+   
+    
+  }
+ button:hover {
+    color: white;
+    cursor: pointer;
+  }
+ 
+  .definition{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: absolute;
+    top: -10% !important;
+    left: 10%;
+    text-align: center;
+   
+   
+  }
+  .containerTab{
+    position: relative;
+    height: 500px;
+    font-size: 110%;
+  }

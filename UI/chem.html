@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="chem.css">
+    <title>Chem</title>
+    <script src="chem.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header">
+
+            <div class="inele">
+                <img src="testtube.PNG" alt="chemCalc" width="60px" height="45px" style="position:relative;top:2px">
+                 <b>ChemCalci</b>
+            </div>
+           
+        </div>
+    </header>
+    <div id="root"></div>
+    
+    <div class="row">
+        <div class="column" onclick="openTab(['MolarWeight']);"><a href="javascript:;" class="menu" id="menuMolarWeight" onclick="selectfunc('MolarWeight')">MolarWeight</a></div>
+        <div class="column" onclick="openTab(['Molarity','MolarityLiquid']);"><a href="javascript:;" class="menu" id="menuMolarity" onclick="selectfunc('Molarity')">Molarity</a></div>
+        <div class="column" onclick="openTab(['Molality']);"><a href="javascript:;" class="menu" id="menuMolality" onclick="selectfunc('Molality')">Molality</a></div>
+        <div class="column" onclick="openTab(['Molefraction']);"><a href="javascript:;" class="menu" id="menuMolefraction" onclick="selectfunc('Molefraction')">Molefraction</a></div>
+        <div class="column" onclick="openTab(['Normality','NormalityLiquid']);"><a href="javascript:;" class="menu" id="menuNormality" onclick="selectfunc('Normality')">Normality</a></div>
+        <div class="column" onclick="openTab(['Strength']);"><a href="javascript:;" class="menu" id="menuStrength" onclick="selectfunc('Strength')">Strength</a></div>
+    </div>
+    <!-- <button type="button" id="button" onclick="selectfunc('MolarWeight')">MolarWeight</button> -->
+    <!-- <button type="button" id="button" onclick="selectfunc('Molarity')">Molarity</button>
+    <button type="button" id="button" onclick="selectfunc('Molality')">Molality</button>
+    <button type="button" id="button" onclick="selectfunc('Molefraction')">Molefraction</button>
+    <button type="button" id="button" onclick="selectfunc('Normality')">Normality</button>
+    <button type="button" id="button" onclick="selectfunc('Strength')">Strength</button> -->
+    
+    
+    <div id="chem">
+        <form id="Molality" class="containerTab" style="display:none;">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <div class="move"><div class = "definition">
+                Molality is defined as the total moles of a solute contained in a kilogram of a solvent.
+            </div></div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="molalitySolute">Name of Solute: </label>
+                </div>
+                <div class="grid-item" align="middle">
+                    <input type="text" align="middle" class="inp" id="molalitySolute" required/>
+                </div>
+            </div>
+           <div class="grid-container">
+            <div class="grid-item">
+                <label for="molalitySoluteWeight">Solute Weight(g): </label>
+
+            </div>
+            <div class="grid-item">
+                <input type="number" align="middle" class="inp" id="molalitySoluteWeight" required/>
+            </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="molalitySolution">Name of Solution: </label>
+                </div>
+                <div class="grid-item" align="middle">
+                    <input type="text" align="middle" class="inp" id="molalitySolution" required/>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="molalitySolutionWeight">Volume of Solution(mL): </label>
+                </div>
+                <div class="grid-item">
+                    <input type="number" align="middle" class="inp" id="molalitySolutionWeight" required/>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item" >
+                    <button type="button" onclick="getMolarityOrMolality('molality')">Calculate Molality</button>
+                </div>
+                <div class="grid-item">
+                    <input type="text" align="middle" class="inp" id="molalityResult" disabled/>
+                </div>
+            </div>
+        </form>
+        <form id="MolarWeight" class="containerTab" style="display:none;">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <div class="move"><div class="definition" ><center>Molar mass of a substance is the mass in grams of one mole of the compound.</center></div></div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="molarweightCompund">Compound: </label>
+                </div>
+                <div class="grid-item">
+                    <input type="text" class="inp" class="inp" id="molarweightCompund" onkeyup="this.value = this.value.replace(/[0 ]/, '')"/></div>
+            </div>
+            <div class="grid-container">
+            
+                <div class="grid-item">
+                    <button type="button" onclick="getMolarWeight()">Calculate Molar Weight</button>
+                </div>
+                <div class="grid-item">
+                    <input type="text" class="inp" id="molarweightResult" disabled/>
+                </div>
+            </div>
+        </form>
+        <form id="Molarity" class="containerTab" style="display:none;">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+           <div class="move"> <div class="definition">Molarity is defined as the number of moles of solute present in a definite amount of liters of the solution, that is, moles per liters of a solution.</div></div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="molaritySolute">Name of Solute: </label>
+                </div>
+                <div class="grid-item">
+                    <input type="text" class="inp" id="molaritySolute"/>
+                </div>
+        </div>
+        <div class="grid-container">
+            
+            <div class="grid-item">
+                <label for="molaritySoluteWeight">Solute Weight(g): </label>
+            </div>
+            <div class="grid-item">
+                <input type="number" class="inp" id="molaritySoluteWeight"/>
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <label for="molaritySolution">Name of Solution: </label>
+            </div>
+            <div class="grid-item">
+                <input type="text" class="inp" id="molaritySolution"/>
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <label for="molaritySolutionWeight">Volume of Solution(g): </label>
+            </div>
+            <div class="grid-item">
+                <input type="number" class="inp" id="molaritySolutionWeight"/>
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <button type="button" onclick="getMolarityOrMolality('molarity')">Calculate Molarity</button>
+            </div>
+            <div class="grid-item">
+                <input type="text" class="inp" id="molarityResult" disabled/>
+            </div>
+        </div>
+    </form>
+    <form id="MolarityLiquid" class="containerTab" style="display:none;">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <div class="grid-container">
+            <div class="grid-item">
+                <label for="molarityLiquidSolute">Name of Solute: </label>
+            </div>
+            <div class="grid-item">
+                <input type="text" class="inp" id="molarityLiquidSolute"/>
+            </div>
+    </div>
+    <div class="grid-container">
+        
+        <div class="grid-item">
+            <label for="molarityLiquidSoluteVolume">Volume of solute: </label>
+        </div>
+        <div class="grid-item">
+            <input type="number" class="inp" id="molarityLiquidSoluteVolume"/>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="grid-item">
+            <label for="molaritySpecificGravity">Specific gravity of solute: </label>
+        </div>
+        <div class="grid-item">
+            <input type="number" class="inp" id="molaritySpecificGravity"/>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="grid-item">
+            <label for="molarityLiquidSolution">Name of Solution: </label>
+        </div>
+        <div class="grid-item">
+            <input type="text" class="inp" id="molarityLiquidSolution"/>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="grid-item">
+            <label for="molarityLiquidSolutionVolume">Volume of Solution(g): </label>
+        </div>
+        <div class="grid-item">
+            <input type="number" class="inp" id="molarityLiquidSolutionVolume"/>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="grid-item">
+            <button type="button" onclick="getMolarityOrMolality('molarityLiquid')">Calculate Molarity</button>
+        </div>
+        <div class="grid-item">
+            <input type="text" class="inp" id="molarityLiquidResult" disabled/>
+        </div>
+    </div>
+</form>
+        <form id="Normality" class="containerTab" style="display:none;">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <div class="move"><div class="definition">Normality is described as the number of gram or mole equivalents of solute present in one litre of a solution. </div></div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="normalitySoluteWeight">Solute Weight: </label>
+                </div>
+                <div class="grid-item">
+                    <input type="number" class="inp" id="normalitySoluteWeight"/>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="normalitySolution">Volume of Solution: </label>
+                </div>
+                <div class="grid-item">
+                    <input type="text" class="inp" id="normalitySolution"/>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="normalityWeight">Equivalent Weight of Solution: </label>
+                </div>
+                <div class="grid-item">
+                    <input type="number" class="inp" id="normalityWeight"/>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <button type="button" onclick="getNormality()">Calculate Normality</button>
+                </div>
+                <div class="grid-item">
+                    <input type="text" class="inp" id="normalityResult" disabled/>
+                </div>
+            </div>
+        </form>
+        <form id="NormalityLiquid" class="containerTab" style="display:none;">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="normalityMolarity">Molarity: </label>
+                </div>
+                <div class="grid-item">
+                    <input type="number" class="inp" id="normalityMolarity"/>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="normalityNfactor">n factor: </label>
+                </div>
+                <div class="grid-item">
+                    <input type="number" class="inp" id="normalityNfactor"/>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <button type="button" onclick="getNormalityLiquid()">Calculate Normality</button>
+                </div>
+                <div class="grid-item">
+                    <input type="text" class="inp" id="normalityLiquidResult" disabled/>
+                </div>
+            </div>
+        </form>
+        <form id="Strength" class="containerTab" style="display:none;">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+            <div class="move"><div class="definition">The strength of the solution is defined as the amount of solute in gram dissolved per liter of the solution.</div></div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="strengthSoluteWeight">Solute Weight: </label>
+                </div>
+                <div class="grid-item">
+                    <input type="number" class="inp" id="strengthSoluteWeight"/>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="molalitySolutionVolume">Solution Volume: </label>
+                </div>
+                <div class="grid-item">
+                    <input type="number" class="inp" id="molalitySolutionVolume"/>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <button type="button" onclick="getStrength()">Calculate Strength</button>
+                </div>
+                <div class="grid-item">
+                    <input type="text" class="inp" id="strengthResult" disabled/>
+                </div>
+            </div>
+        </form>
+        <form id="Molefraction" class="containerTab" style="display:none;">
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+          <div class="move"><div class="definition">  Mole fraction represents the number of molecules of a particular component in a mixture divided by the total number of moles in the given mixture. </div></div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="molefractionSolute">Name of Solute: </label>
+                </div>
+                <div class="grid-item">
+                    <input type="text" class="inp" id="molefractionSolute" required/></div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="molefractionSoluteWeight">Solute Weight(g): </label>
+                </div>
+                <div class="grid-item">
+                    <input type="number" class="inp" id="molefractionSoluteWeight" required/>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="molefractionSolvent">Name of Solvent: </label>
+                </div>
+                <div class="grid-item">
+                    <input type="text" class="inp" id="molefractionSolvent" required/>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <label for="molefractionSolventWeight">Solvent Weight(g): </label>
+                </div>
+                <div class="grid-item">
+                    <input type="number" class="inp" id="molefractionSolventWeight" required/>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <button type="button" onclick="getMoleFraction()">Calculate Molefraction</button>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                   <label> Molefraction of Solute:</label>
+                </div>
+                <div class="grid-item">
+                    <input type="text" class="inp" id="molefractionResultSolute" disabled/>
+                </div>
+                <div class="grid-item">
+                    <label>Molefraction of Solvent:</label>
+                </div>
+                <div class="grid-item">
+                    <input type="text" class="inp" id="molefractionResultSolvent" disabled/>
+                </div>
+                
+            
+        </form>
+        
+    
+    
+    
+    
+    
+    
+</div>
+    <!-- <script>
+        
+        document.getElementById("Molarity").style.visibility="hidden";
+        document.getElementById("Molefraction").style.visibility="hidden";
+        document.getElementById("Molality").style.visibility="hidden";
+        document.getElementById("Strength").style.visibility="hidden";
+        document.getElementById("Normality").style.visibility="hidden";
+        document.getElementById("MolarWeight").style.visibility="hidden";
+    </script> -->
+</body>
+</html>
+
